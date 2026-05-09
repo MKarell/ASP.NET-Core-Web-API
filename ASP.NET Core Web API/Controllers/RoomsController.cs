@@ -12,8 +12,6 @@ namespace Core_Web_API.Controllers
     [Route("api/[controller]")]
     public class RoomsController : ControllerBase
     {
-        // GET: api/rooms
-        // Obsługuje również query string: ?minCapacity=20&hasProjector=true&activeOnly=true
         [HttpGet]
         public ActionResult<IEnumerable<Room>> GetRooms([FromQuery] int? minCapacity, [FromQuery] bool? hasProjector, [FromQuery] bool? activeOnly)
         {
@@ -31,7 +29,6 @@ namespace Core_Web_API.Controllers
             return Ok(query.ToList());
         }
 
-        // GET: api/rooms/{id}
         [HttpGet("{id}")]
         public ActionResult<Room> GetRoom(int id)
         {
@@ -43,7 +40,6 @@ namespace Core_Web_API.Controllers
             return Ok(room);
         }
 
-        // GET: api/rooms/building/{buildingCode}
         [HttpGet("building/{buildingCode}")]
         public ActionResult<IEnumerable<Room>> GetRoomsByBuilding(string buildingCode)
         {
@@ -54,7 +50,6 @@ namespace Core_Web_API.Controllers
             return Ok(rooms);
         }
 
-        // POST: api/rooms
         [HttpPost]
         public ActionResult<Room> CreateRoom([FromBody] Room room)
         {
@@ -64,7 +59,6 @@ namespace Core_Web_API.Controllers
             return CreatedAtAction(nameof(GetRoom), new { id = room.Id }, room);
         }
 
-        // PUT: api/rooms/{id}
         [HttpPut("{id}")]
         public IActionResult UpdateRoom(int id, [FromBody] Room updatedRoom)
         {
@@ -84,7 +78,6 @@ namespace Core_Web_API.Controllers
             return Ok(room);
         }
 
-        // DELETE: api/rooms/{id}
         [HttpDelete("{id}")]
         public IActionResult DeleteRoom(int id)
         {
@@ -94,7 +87,6 @@ namespace Core_Web_API.Controllers
                 return NotFound(new { message = $"Sala o ID {id} nie została znaleziona." });
             }
 
-            // Reguła biznesowa: nie usuwamy sali, jeśli ma przypisane rezerwacje
             var hasReservations = DataStore.Reservations.Any(res => res.RoomId == id);
             if (hasReservations)
             {

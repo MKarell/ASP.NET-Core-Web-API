@@ -1,9 +1,7 @@
 ﻿var builder = WebApplication.CreateBuilder(args);
 
-// Rejestracja kontrolerów w kontenerze DI
 builder.Services.AddControllers();
 
-// Opcjonalnie Swagger ułatwiający testowanie
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,7 +17,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-// Mapowanie tras z atrybutów w kontrolerach
 app.MapControllers();
 
 app.Run();
