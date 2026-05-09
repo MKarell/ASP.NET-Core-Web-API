@@ -1,12 +1,6 @@
 ﻿using Core_Web_API.Data;
 using Core_Web_API.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using Core_Web_API.Data;
-using Core_Web_API.Models;
 
 namespace Core_Web_API.Controllers
 {

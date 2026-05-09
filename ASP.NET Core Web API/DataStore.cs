@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Core_Web_API.Models;
+﻿using Core_Web_API.Models;
 
 namespace Core_Web_API.Data
 {
